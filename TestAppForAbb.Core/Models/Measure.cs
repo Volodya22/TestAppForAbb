@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TestAppForAbb.Core.Models
 {
@@ -6,14 +7,10 @@ namespace TestAppForAbb.Core.Models
     {
         public DateTime Time { get; set; }
 
-        public int MotorId { get; set; }
+        public virtual ICollection<CurrentMeasure> CurrentMeasures { get; set; }
 
-        public double? Current { get; set; }
+        public virtual ICollection<TorqueMeasure> TorqueMeasures { get; set; }
 
-        public double? Torque { get; set; }
-
-        public double? Pressure { get; set; }
-
-        public virtual Motor Motor { get; set; }
+        public virtual ICollection<PressureMeasure> PressureMeasures { get; set; }
     }
 }

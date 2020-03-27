@@ -1,4 +1,4 @@
-﻿using TestAppForAbb.Core.Enum;
+﻿using System.Collections.Generic;
 
 namespace TestAppForAbb.Core.Models
 {
@@ -6,20 +6,14 @@ namespace TestAppForAbb.Core.Models
     {
         public string Name { get; set; }
 
-        public MotorType Type { get; set; }
-
         public double MaxPower { get; set; }
 
-        public double? Voltage { get; set; }
+        public bool IsDeleted { get; set; }
 
-        public double? FuelConsumption { get; set; }
+        public virtual ICollection<ElectricMotor> ElectricMotors { get; set; }
 
-        public double? Current { get; set; }
+        public virtual ICollection<CombustionMotor> CombustionMotors { get; set; }
 
-        public double? MaxTorque { get; set; }
-
-        public double? MaxPressure { get; set; }
-
-        public double? Displacement { get; set; }
+        public virtual ICollection<HydraulicMotor> HydraulicMotors { get; set; }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using TestAppForAbb.Core.Models;
 using TestAppForAbb.Services.ViewModel;
 
 namespace TestAppForAbb.Services.Interfaces
 {
-    public interface IMeasureService : IService<Measure>
+    public interface IMeasureService
     {
-        List<MeasureWithDifferenceViewModel> GetDifferences();
+        List<MeasureWithDifferenceViewModel> Select();
     }
 }

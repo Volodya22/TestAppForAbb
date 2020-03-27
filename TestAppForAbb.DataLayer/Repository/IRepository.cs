@@ -7,9 +7,19 @@ namespace TestAppForAbb.DataLayer.Repository
     {
         DbSet<Motor> Motors { get; set; }
 
+        DbSet<ElectricMotor> ElectricMotors { get; set; }
+
+        DbSet<CombustionMotor> CombustionMotors { get; set; }
+
+        DbSet<HydraulicMotor> HydraulicMotors { get; set; }
+
         DbSet<Measure> Measures { get; set; }
 
-        DbSet<T> Set<T>() where T : class;
+        DbSet<CurrentMeasure> CurrentMeasures { get; set; }
+
+        DbSet<PressureMeasure> PressureMeasures { get; set; }
+
+        DbSet<TorqueMeasure> TorqueMeasures { get; set; }
 
         int SaveChanges();
     }

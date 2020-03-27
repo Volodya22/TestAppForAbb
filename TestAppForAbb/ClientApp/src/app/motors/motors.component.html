@@ -1,0 +1,39 @@
+<h1 id="tableLabel">Motors</h1>
+
+<p *ngIf="!motors">
+    <em>Loading...</em>
+</p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="motors">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Max Power (kW)</th>
+      <th>Voltage (V)</th>
+      <th>Current (A)</th>
+      <th>Fuel consumption (l/h)</th>
+      <th>Max Torque at (rpm)</th>
+      <th>Max Pressure (bar)</th>
+      <th>Displacement (cm3/rev)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let motor of motors">
+      <td>{{ motor.name }}</td>
+      <td>{{ getType(motor.type) }}</td>
+      <td>{{ motor.maxPower }}</td>
+      <td>{{ motor.voltage }}</td>
+      <td>{{ motor.current }}</td>
+      <td>{{ motor.fuelConsumption }}</td>
+      <td>{{ motor.maxTorque }}</td>
+      <td>{{ motor.maxPressure }}</td>
+      <td>{{ motor.displacement }}</td>
+      <td>
+          <button>Edit</button>
+          <button (click)="onDelete(motor.motorId)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

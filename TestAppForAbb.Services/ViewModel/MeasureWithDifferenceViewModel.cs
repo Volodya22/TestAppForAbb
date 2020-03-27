@@ -1,20 +1,58 @@
-﻿using TestAppForAbb.Core.Models;
+﻿using System;
+using TestAppForAbb.Core.Models;
 
 namespace TestAppForAbb.Services.ViewModel
 {
     public class MeasureWithDifferenceViewModel
     {
-        private readonly Measure _measure;
-
-        public MeasureWithDifferenceViewModel(Measure measure)
+        public MeasureWithDifferenceViewModel(TorqueMeasure measure)
         {
-            _measure = measure;
+            MeasureId = measure.MeasureId;
+            Time = measure.Measure.Time;
+            MotorId = measure.CombustionMotor.MotorId;
+            MotorName = measure.CombustionMotor.Motor.Name;
+            Torque = measure.Torque;
+            TorqueDifference = measure.Torque - measure.CombustionMotor.MaxTorque;
         }
 
-        public double? TorqueDifference => _measure.Torque - _measure.Motor.MaxTorque;
+        public MeasureWithDifferenceViewModel(PressureMeasure measure)
+        {
+            MeasureId = measure.MeasureId;
+            Time = measure.Measure.Time;
+            MotorId = measure.HydraulicMotor.MotorId;
+            MotorName = measure.HydraulicMotor.Motor.Name;
+            Pressure = measure.Pressure;
+            PressureDifference = measure.Pressure - measure.HydraulicMotor.MaxPressure;
+        }
 
-        public double? CurrentDifference => _measure.Current - _measure.Motor.Current;
+        public MeasureWithDifferenceViewModel(CurrentMeasure measure)
+        {
+            MeasureId = measure.MeasureId;
+            Time = measure.Measure.Time;
+            MotorId = measure.ElectricMotor.MotorId;
+            MotorName = measure.ElectricMotor.Motor.Name;
+            Current = measure.Current;
+            CurrentDifference = measure.Current - measure.ElectricMotor.Current;
+        }
 
-        public double? CurrentPressure => _measure.Pressure - _measure.Motor.MaxPressure;
+        public DateTime Time { get; set; }
+
+        public int MeasureId { get; set; }
+
+        public int MotorId { get; set; }
+
+        public string MotorName { get; set; }
+
+        public double? Current { get; set; }
+
+        public double? CurrentDifference { get; set; }
+
+        public double? Torque { get; set; }
+
+        public double? TorqueDifference { get; set; }
+
+        public double? Pressure { get; set; }
+
+        public double? PressureDifference { get; set; }
     }
 }

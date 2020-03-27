@@ -1,0 +1,32 @@
+<h1 id="tableLabel">Measures</h1>
+
+<p *ngIf="!measures">
+    <em>Loading...</em>
+</p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="measures">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Motor</th>
+      <th>Current</th>
+      <th>Difference</th>
+      <th>Revs.</th>
+      <th>Difference</th>
+      <th>Pressure</th>
+      <th>Difference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let measure of measures">
+      <td>{{ measure.time | date:'hh:mm:ss' }}</td>
+      <td>{{ measure.motorName }}</td>
+      <td>{{ measure.current | number }}</td>
+      <td>{{ measure.currentDifference | number }}</td>
+      <td>{{ measure.torque | number }}</td>
+      <td>{{ measure.torqueDifference | number }}</td>
+      <td>{{ measure.pressure | number }}</td>
+      <td>{{ measure.pressureDifference | number }}</td>
+    </tr>
+  </tbody>
+</table>
