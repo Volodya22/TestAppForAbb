@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TestAppForAbb.Services.Services
 {
+    /// <inheritdoc cref="IMeasureService" />
     public class MeasureService : IMeasureService
     {
         private readonly IRepository _context;

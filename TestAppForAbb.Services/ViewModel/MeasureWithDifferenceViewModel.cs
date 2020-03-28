@@ -3,6 +3,9 @@ using TestAppForAbb.Core.Models;
 
 namespace TestAppForAbb.Services.ViewModel
 {
+    /// <summary>
+    /// ViewModel for Measure
+    /// </summary>
     public class MeasureWithDifferenceViewModel
     {
         public MeasureWithDifferenceViewModel(TorqueMeasure measure)
@@ -35,24 +38,54 @@ namespace TestAppForAbb.Services.ViewModel
             CurrentDifference = measure.Current - measure.ElectricMotor.Current;
         }
 
+        /// <summary>
+        /// Time of measurment
+        /// </summary>
         public DateTime Time { get; set; }
 
+        /// <summary>
+        /// Identifier of Measure base object
+        /// </summary>
         public int MeasureId { get; set; }
 
+        /// <summary>
+        /// Identifier of related Motor
+        /// </summary>
         public int MotorId { get; set; }
 
+        /// <summary>
+        /// Name of related Motor
+        /// </summary>
         public string MotorName { get; set; }
 
+        /// <summary>
+        /// Value of Current
+        /// </summary>
         public double? Current { get; set; }
 
+        /// <summary>
+        /// Difference for Current
+        /// </summary>
         public double? CurrentDifference { get; set; }
 
+        /// <summary>
+        /// Value of Torque
+        /// </summary>
         public double? Torque { get; set; }
 
+        /// <summary>
+        /// Difference for Torque
+        /// </summary>
         public double? TorqueDifference { get; set; }
 
+        /// <summary>
+        /// Value of Pressure
+        /// </summary>
         public double? Pressure { get; set; }
 
+        /// <summary>
+        /// Difference for Pressure
+        /// </summary>
         public double? PressureDifference { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using TestAppForAbb.Services.ViewModel;
 
 namespace TestAppForAbb.Services.Services
 {
+    /// <inheritdoc cref="IMotorService" />
     public class MotorService : IMotorService
     {
         private readonly IRepository _context;

@@ -3,6 +3,7 @@ using TestAppForAbb.Core.Models;
 
 namespace TestAppForAbb.DataLayer.Repository
 {
+    /// <inheritdoc cref="IRepository" />
     public class MotorDbContext : DbContext, IRepository
     {
         public MotorDbContext(DbContextOptions<MotorDbContext> options) : base(options)
