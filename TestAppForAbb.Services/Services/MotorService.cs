@@ -46,7 +46,18 @@ namespace TestAppForAbb.Services.Services
 
         public void Update(MotorViewModel motor)
         {
-            throw new System.NotImplementedException();
+            switch(motor.Type)
+            {
+                case MotorType.Electric:
+                    UpdateElectric(motor);
+                    break;
+                case MotorType.Hydraulic:
+                    UpdateHydraulic(motor);
+                    break;
+                case MotorType.Combustion:
+                    UpdateCombustion(motor);
+                    break;
+            }
         }
 
         public void Delete(int motorId)
@@ -128,6 +139,55 @@ namespace TestAppForAbb.Services.Services
             _context.SaveChanges();
 
             return motorBase;
+        }
+
+        #endregion
+
+        #region Update
+
+        private void UpdateElectric(MotorViewModel motor)
+        {
+            var toChange = _context.ElectricMotors.FirstOrDefault(m => m.Id == motor.Id);
+
+            if (toChange == null)
+            {
+                return;
+            }
+
+            toChange.Voltage = motor.Voltage ?? 0;
+            toChange.Current = motor.Current ?? 0;
+
+            _context.SaveChanges();
+        }
+
+        private void UpdateHydraulic(MotorViewModel motor)
+        {
+            var toChange = _context.HydraulicMotors.FirstOrDefault(m => m.Id == motor.Id);
+
+            if (toChange == null)
+            {
+                return;
+            }
+
+            toChange.MaxPressure = motor.MaxPressure ?? 0;
+            toChange.Displacement = motor.Displacement ?? 0;
+
+            _context.SaveChanges();
+        }
+
+        private void UpdateCombustion(MotorViewModel motor)
+        {
+            var toChange = _context.CombustionMotors.FirstOrDefault(m => m.Id == motor.Id);
+
+            if (toChange == null)
+            {
+                return;
+            }
+
+            toChange.MaxTorque = motor.MaxTorque ?? 0;
+            toChange.FuelConsumption = motor.FuelConsumption ?? 0;
+
+            _context.SaveChanges();
         }
 
         #endregion

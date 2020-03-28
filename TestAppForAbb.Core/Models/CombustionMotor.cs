@@ -7,7 +7,7 @@ namespace TestAppForAbb.Core.Models
     {
         public int MotorId { get; set; }
 
-        public MotorType Type => MotorType.Electric;
+        public MotorType Type => MotorType.Combustion;
 
         public double FuelConsumption { get; set; }
 

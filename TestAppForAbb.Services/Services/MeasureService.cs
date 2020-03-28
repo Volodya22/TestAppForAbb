@@ -18,11 +18,14 @@ namespace TestAppForAbb.Services.Services
 
         public List<MeasureWithDifferenceViewModel> Select()
         {
-            var torque = _context.TorqueMeasures.Include(m => m.Measure).Include(m => m.CombustionMotor).ThenInclude(m => m.Motor).AsEnumerable()
+            var torque = _context.TorqueMeasures.Where(m => !m.CombustionMotor.Motor.IsDeleted)
+                .Include(m => m.Measure).Include(m => m.CombustionMotor).ThenInclude(m => m.Motor).AsEnumerable()
                 .Select(m => new MeasureWithDifferenceViewModel(m)).ToList();
-            var pressure = _context.PressureMeasures.Include(m => m.Measure).Include(m => m.HydraulicMotor).ThenInclude(m => m.Motor).AsEnumerable()
+            var pressure = _context.PressureMeasures.Where(m => !m.HydraulicMotor.Motor.IsDeleted)
+                .Include(m => m.Measure).Include(m => m.HydraulicMotor).ThenInclude(m => m.Motor).AsEnumerable()
                 .Select(m => new MeasureWithDifferenceViewModel(m)).ToList();
-            var current = _context.CurrentMeasures.Include(m => m.Measure).Include(m => m.ElectricMotor).ThenInclude(m => m.Motor).AsEnumerable()
+            var current = _context.CurrentMeasures.Where(m => !m.ElectricMotor.Motor.IsDeleted)
+                .Include(m => m.Measure).Include(m => m.ElectricMotor).ThenInclude(m => m.Motor).AsEnumerable()
                 .Select(m => new MeasureWithDifferenceViewModel(m)).ToList();
 
             torque.AddRange(pressure);

@@ -1,2 +1,34 @@
-<h3>Motor Name: {{ motor.name }}</h3>
-<h3>Motor Type: {{ getType(motor.Type) }}</h3>
+<div class="backdrop"></div>
+<div class="modal-edit">
+    <h5>Motor Name: {{ motor.name }}</h5>
+    <h5>Motor Type: {{ getType(motor.type) }}</h5>
+
+    <div class="form-group" *ngIf="isElectric">
+        <label for="voltage">Voltage</label>
+        <input type="number" name="voltage" id="voltage" [(ngModel)]="motor.voltage">
+        <br/>
+        <label for="current">Current</label>
+        <input type="number" name="current" id="current" [(ngModel)]="motor.current">
+    </div>
+
+    <div class="form-group" *ngIf="isCombustion">
+        <label for="fuel">Fuel cons.</label>
+        <input type="number" name="fuel" id="fuel" [(ngModel)]="motor.fuelConsumption">
+        <br/>
+        <label for="revs">Revs</label>
+        <input type="number" name="revs" id="revs" [(ngModel)]="motor.maxTorque">
+    </div>
+
+    <div class="form-group" *ngIf="isHydraulic">
+        <label for="pressure">Pressure</label>
+        <input type="number" name="pressure" id="pressure" [(ngModel)]="motor.maxPressure">
+        <br/>
+        <label for="displacement">Displacement</label>
+        <input type="number" name="displacement" id="displacement" [(ngModel)]="motor.displacement">
+    </div>
+
+    <div class="buttons">
+        <button (click)="onSave()">Save</button>
+        <button class="btn-cancel" (click)="onCancel()">Cancel</button>
+    </div>
+</div>

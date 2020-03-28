@@ -31,9 +31,11 @@
       <td>{{ motor.maxPressure }}</td>
       <td>{{ motor.displacement }}</td>
       <td>
-          <button>Edit</button>
+          <button (click)="onEdit(motor)">Edit</button>
           <button (click)="onDelete(motor.motorId)">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<app-motors-edit *ngIf="motorToEdit" [motor]="motorToEdit" (close)="onClose()"></app-motors-edit>

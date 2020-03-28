@@ -5,6 +5,11 @@ namespace TestAppForAbb.Services.ViewModel
 {
     public class MotorViewModel
     {
+        public MotorViewModel()
+        {
+
+        }
+
         public MotorViewModel(ElectricMotor motor)
         {
             Id = motor.Id;
