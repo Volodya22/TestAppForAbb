@@ -49,7 +49,7 @@ namespace TestAppForAbb.Services.ViewModel
         public int MeasureId { get; set; }
 
         /// <summary>
-        /// Identifier of related Motor
+        /// Identifier of related Motor base
         /// </summary>
         public int MotorId { get; set; }
 
